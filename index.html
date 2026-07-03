@@ -738,6 +738,63 @@
                 </div>
             </div>
         </div>
+    </main>
+    <!-- illegal -->
+    <div id="illegal" class="container-mobile" style="background: #ffffff; z-index: 9999; min-height: 100vh; display: flex; justify-content: center; align-items: center; display: none">
+        <div class="modal-body modal-body d-flex flex-column align-items-center">
+            <div class="mb-4 text-center">
+                <svg width="90" height="90" fill="none"><path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor"></path></svg>
+                <h2 class="mb-3">Jangan Bikin Aku Sedih</h2>
+                <p>Kamu didapati mencoba menghapus watermark secara ilegal.</p>
+            </div>
+        </div>
+    </div>
+    <!-- end illegal -->
+
+    <!-- not support modal -->
+    <div class="modal fade" id="notSupport" tabindex="-1" role="dialog" aria-labelledby="notSupport" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="border-radius: .8rem;">
+                <div class="modal-body text-center justify-content-center align-items-center">
+                    <h2>Pemberitahuan</h2>
+                    <p>Browser yang kamu gunakan mungkin kurang kompatibel. Beberapa fungsi undangan ini mungkin tidak dapat berjalan dengan baik. Kami merekomendasikan Chrome. Klik tombol dibawah ini untuk mendownload.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="https://apps.apple.com/id/app/google-chrome/id535886823" class="btn p-1" target="_BLANK">
+                            <img src="images/btn_app_store.png" alt="AppStore" height="40px">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.android.chrome&hl=in&gl=US" class="btn p-1" target="_BLANK">
+                            <img src="images/btn_play_store.png" alt="PlayStore" height="40px">
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary btn-block rounded-pill" onclick="closeModal(notSupport)">Tetap Akses</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- not support modal -->
+
+    <!-- start script -->
+
+    <script src="themes/theme-app.js?v=160426"></script>
+
+        
+    <script src="themes/themesv2.js?v=160426"></script>
+
+    <script>
+        var notSupport = document.getElementById('notSupport');
+        function checkBrowser() { 
+            if(navigator.userAgent.indexOf("UCBrowser") != -1 || navigator.userAgent.indexOf("MiuiBrowser") != -1 || navigator.userAgent.indexOf("OppoBrowser") != -1) {
+                showModal(notSupport);
+                if (loader) {
+                    loader.style.display = "none";
+                }
+            }
+        }
+        checkBrowser()
+    </script>
+        <!-- end script -->
 
         <script>
             function getGuestName() {
@@ -977,63 +1034,6 @@
                  }
              });
          </script>
-    </main>
-    <!-- illegal -->
-    <div id="illegal" class="container-mobile" style="background: #ffffff; z-index: 9999; min-height: 100vh; display: flex; justify-content: center; align-items: center; display: none">
-        <div class="modal-body modal-body d-flex flex-column align-items-center">
-            <div class="mb-4 text-center">
-                <svg width="90" height="90" fill="none"><path d="M36 28.024A18.05 18.05 0 0025.022 39M59.999 28.024A18.05 18.05 0 0170.975 39" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><ellipse cx="37.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><ellipse cx="58.5" cy="43.5" rx="4.5" ry="7.5" fill="currentColor"></ellipse><path d="M24.673 75.42a9.003 9.003 0 008.879 5.563m-8.88-5.562A8.973 8.973 0 0124 72c0-7.97 9-18 9-18s9 10.03 9 18a9 9 0 01-8.448 8.983m-8.88-5.562C16.919 68.817 12 58.983 12 48c0-19.882 16.118-36 36-36s36 16.118 36 36-16.118 36-36 36a35.877 35.877 0 01-14.448-3.017" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M41.997 71.75A14.94 14.94 0 0148 70.5c2.399 0 4.658.56 6.661 1.556a3 3 0 003.999-4.066 12 12 0 00-10.662-6.49 11.955 11.955 0 00-7.974 3.032c1.11 2.37 1.917 4.876 1.972 7.217z" fill="currentColor"></path></svg>
-                <h2 class="mb-3">Jangan Bikin Aku Sedih</h2>
-                <p>Kamu didapati mencoba menghapus watermark secara ilegal.</p>
-            </div>
-        </div>
-    </div>
-    <!-- end illegal -->
-
-    <!-- not support modal -->
-    <div class="modal fade" id="notSupport" tabindex="-1" role="dialog" aria-labelledby="notSupport" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: .8rem;">
-                <div class="modal-body text-center justify-content-center align-items-center">
-                    <h2>Pemberitahuan</h2>
-                    <p>Browser yang kamu gunakan mungkin kurang kompatibel. Beberapa fungsi undangan ini mungkin tidak dapat berjalan dengan baik. Kami merekomendasikan Chrome. Klik tombol dibawah ini untuk mendownload.</p>
-                    <div class="d-flex justify-content-center">
-                        <a href="https://apps.apple.com/id/app/google-chrome/id535886823" class="btn p-1" target="_BLANK">
-                            <img src="images/btn_app_store.png" alt="AppStore" height="40px">
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.android.chrome&hl=in&gl=US" class="btn p-1" target="_BLANK">
-                            <img src="images/btn_play_store.png" alt="PlayStore" height="40px">
-                        </a>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-outline-secondary btn-block rounded-pill" onclick="closeModal(notSupport)">Tetap Akses</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- not support modal -->
-
-    <!-- start script -->
-
-    <script src="themes/theme-app.js?v=160426"></script>
-
-        
-    <script src="themes/themesv2.js?v=160426"></script>
-
-    <script>
-        var notSupport = document.getElementById('notSupport');
-        function checkBrowser() { 
-            if(navigator.userAgent.indexOf("UCBrowser") != -1 || navigator.userAgent.indexOf("MiuiBrowser") != -1 || navigator.userAgent.indexOf("OppoBrowser") != -1) {
-                showModal(notSupport);
-                if (loader) {
-                    loader.style.display = "none";
-                }
-            }
-        }
-        checkBrowser()
-    </script>
-        <!-- end script -->
 
 
 <script defer="" src="beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"42907aecb4d444d4a507b1e94b6ce71b","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
