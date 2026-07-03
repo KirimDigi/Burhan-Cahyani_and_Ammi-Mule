@@ -863,34 +863,40 @@
                      });
              }
 
-             if (btnToggleWishes) {
-                 btnToggleWishes.addEventListener("click", function() {
+             // Delegate click for btnToggleWishes
+             document.addEventListener("click", function(e) {
+                 var btnToggle = e.target.closest("#btnToggleWishes");
+                 if (btnToggle) {
+                     var wishesContainer = document.getElementById("wishesContainer");
+                     var wishesStatus = document.getElementById("wishesStatus");
                      wishesVisible = !wishesVisible;
                      if (wishesVisible) {
-                         wishesContainer.style.display = "block";
-                         this.innerHTML = "Sembunyikan";
+                         if (wishesContainer) wishesContainer.style.display = "block";
+                         btnToggle.innerHTML = "Sembunyikan";
                          loadWishes();
                      } else {
-                         wishesContainer.style.display = "none";
-                         this.innerHTML = "Tampilkan Ucapan";
+                         if (wishesContainer) wishesContainer.style.display = "none";
+                         btnToggle.innerHTML = "Tampilkan Ucapan";
                      }
-                 });
-             }
+                 }
+             });
 
-             // Handle show/hide guest count based on attendance selection
-             var rsvpAttendance = document.getElementById('rsvpAttendance');
-             if (rsvpAttendance) {
-                 rsvpAttendance.addEventListener('change', function() {
+             // Delegate change for rsvpAttendance
+             document.addEventListener('change', function(e) {
+                 if (e.target && e.target.id === 'rsvpAttendance') {
                      var guestCountGroup = document.getElementById('guestCountGroup');
-                     if (this.value === 'Hadir') {
-                         guestCountGroup.style.display = 'block';
-                         document.getElementById('rsvpGuests').required = true;
-                     } else {
-                         guestCountGroup.style.display = 'none';
-                         document.getElementById('rsvpGuests').required = false;
+                     var rsvpGuests = document.getElementById('rsvpGuests');
+                     if (guestCountGroup && rsvpGuests) {
+                         if (e.target.value === 'Hadir') {
+                             guestCountGroup.style.display = 'block';
+                             rsvpGuests.required = true;
+                         } else {
+                             guestCountGroup.style.display = 'none';
+                             rsvpGuests.required = false;
+                         }
                      }
-                 });
-             }
+                 }
+             });
 
              // Handle opening of RSVP modal name prefill
              document.addEventListener("click", function(e) {
@@ -903,10 +909,9 @@
                  }
              });
 
-             // Submit handler for RSVP Form
-             var customRsvpForm = document.getElementById('customRsvpForm');
-             if (customRsvpForm) {
-                 customRsvpForm.addEventListener('submit', function(e) {
+             // Delegate submit for customRsvpForm
+             document.addEventListener('submit', function(e) {
+                 if (e.target && e.target.id === 'customRsvpForm') {
                      e.preventDefault();
                      var btnSubmit = document.getElementById('btnSubmitRsvp');
                      var statusDiv = document.getElementById('rsvpSubmitStatus');
@@ -943,7 +948,8 @@
                          
                          setTimeout(function() {
                              closeModal(document.getElementById('rsvpModal'));
-                             customRsvpForm.reset();
+                             var formEl = document.getElementById('customRsvpForm');
+                             if (formEl) formEl.reset();
                              var guestCountGroup = document.getElementById('guestCountGroup');
                              if (guestCountGroup) guestCountGroup.style.display = 'none';
                              btnSubmit.disabled = false;
@@ -961,8 +967,8 @@
                          btnSubmit.innerHTML = "Kirim Ucapan RSVP";
                          console.error(err);
                      });
-                 });
-             }
+                 }
+             });
          </script>
     </main>
     <!-- illegal -->
