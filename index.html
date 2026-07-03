@@ -814,8 +814,14 @@
                 wishesStatus.style.display = "block";
                 wishesList.innerHTML = "";
                 
-                fetch(APPS_SCRIPT_URL)
-                    .then(function(response) { return response.json(); })
+                var controller = new AbortController();
+                var timeoutId = setTimeout(function() { controller.abort(); }, 8000);
+                
+                fetch(APPS_SCRIPT_URL, { signal: controller.signal })
+                    .then(function(response) {
+                        clearTimeout(timeoutId);
+                        return response.json();
+                    })
                     .then(function(result) {
                          if (result.status === "success") {
                              var data = result.data;
@@ -858,7 +864,8 @@
                          }
                      })
                      .catch(function(error) {
-                         wishesStatus.innerHTML = "Gagal memuat ucapan dari server.";
+                         clearTimeout(timeoutId);
+                         wishesStatus.innerHTML = "Gagal memuat ucapan dari server (pastikan deployment Apps Script Anda sudah benar).";
                          console.error(error);
                      });
              }
